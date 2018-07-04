@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom';
 import {Provider } from "react-redux"
 import {combineReducers } from "redux"
 import { Router, Route, browserHistory } from 'react-router'
-// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import _ from "lodash"
 import configureStore from "./store"
-
 import allRoutes from "routers"
+
+window._ = _;
 
 const store = configureStore()
 
