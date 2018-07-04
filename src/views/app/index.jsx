@@ -1,4 +1,6 @@
 import React from "react"
+import {connect} from 'react-redux'
+import {bindActionCreators} from "redux"
 import {Button} from "antd"
 
 class App extends React.Component {
@@ -13,7 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <Button type="primary">sas</Button>
+          <Button type="primary">sa1s</Button>
         </div>
         <div>{this.props.children}</div>
       </div>
@@ -21,5 +23,15 @@ class App extends React.Component {
   }
 }
 
+function mapDispathToProps(){
+  return bindActionCreators({}, dispath)
+}
 
-export default App
+function mapStateToProps(state){
+  console.log(state);
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(App)
