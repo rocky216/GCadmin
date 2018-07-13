@@ -1,7 +1,6 @@
 import {
-  SELECT_SUBREDDIT
-} from "actions/smallproAction"
-
+  APP_SELECT_KEY
+} from "actions/appAction"
 
 
 const stateInitial = {
@@ -10,7 +9,7 @@ const stateInitial = {
 
 export default function(state = stateInitial, action){
   switch (action.type) {
-    case SELECT_SUBREDDIT:
+    case APP_SELECT_KEY:
       return Object.assign({},state, action)
     default:
       return  state

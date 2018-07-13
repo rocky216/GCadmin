@@ -1,40 +1,53 @@
 import React from "react"
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux"
-import {Button} from "antd"
-import {getList} from "actions/smallproAction"
+import {Layout, Menu, Icon, Avatar } from "antd"
+import SideBar from "components/SideBar"
+
+const { Header, Sider, Content } = Layout;
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state={
-
+      collapsed: false,
     }
   }
   componentDidMount(){
-    this.props.actions.getList({bb: 11})
+
+
+  }
+  toggle(){
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
   }
   render(){
-
     return (
-      <div>
-        <div>
-          <Button type="primary">sa1s</Button>
-        </div>
-        <div>{this.props.children}</div>
-      </div>
+      <Layout>
+        <SideBar></SideBar>
+        <Layout>
+          <Header style={{ background: '#fff', padding: 0 }}>
+            <div style={{float: 'left'}}>
+              <Avatar icon="user" />
+            </div>
+          </Header>
+          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 780 }}>
+            {this.props.children}
+          </Content>
+        </Layout>
+      </Layout>
     )
   }
 }
 
 function mapDispathToProps(dispath){
   return {
-    actions: bindActionCreators({getList}, dispath)
+    actions: bindActionCreators({}, dispath)
   }
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return {
 
   }

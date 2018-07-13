@@ -1,18 +1,45 @@
 import React from "react"
 import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
-import {Menu, Icon, Button} from "antd"
+import {Link} from "react-router"
+import {Menu, Icon, Layout} from "antd"
+import menu from "./menu"
+
+const { Sider } = Layout;
+const {SubMenu} = Menu
 
 class SideBar extends React.Component {
   constructor(props) {
     super(props)
-    this.state={}
+    this.state={
+      collapsed: false
+    }
   }
   render(){
     return(
-      <div>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={this.state.collapsed}
+      >
+        <div className="logo" >11</div>
+        <Menu theme="dark" mode="inline" defaultOpenKeys={["1"]} defaultSelectedKeys={['101']}>
 
-      </div>
+          {menu.map(item=>{
+            return <SubMenu
+                    key={item.key}
+                    title={<span><Icon type={item.icon}/>{item.name}</span>}
+                  >
+                    {item.children?item.children.map(elem=>(
+                        <Menu.Item key={elem.key}>
+                          <Link to="/home">{elem.name}</Link>
+                        </Menu.Item>
+                    )):''}
+                  </SubMenu>
+          })}
+
+        </Menu>
+      </Sider>
     )
   }
 }

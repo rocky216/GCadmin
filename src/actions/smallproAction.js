@@ -4,8 +4,7 @@ export function getList(params){
   return function(dispatch, getState){
     dispatch({
       type: SELECT_SUBREDDIT,
-      mydata: "mydata",
-      spending: false
+      getList: params.getList
     })
   }
 }
